@@ -1,0 +1,18 @@
+class Solution {
+    public void backtrack(int n, List<Integer> nums,List<List<integer>> output, int first){
+        if(first==n) output.add(new List<Integer>(nums))
+        for(int i=first;i<n;i++){
+            Collections.swap(nums,first,i);
+            backtrack(nums,first+1,i)
+        }
+    }
+    public List<List<Integer>> permute(int[] nums) {
+        List<Integer> nums1=new ArrayList<>();
+        for(int num:nums){
+            nums1.add(num);
+        }
+        int n=nums.length;
+        backtrack(n,nums1,output,0);
+        return output;
+    }
+}
